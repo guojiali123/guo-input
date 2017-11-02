@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					url:'http://localhost:3000/item/view',
+					type:'POST',
+					data:{},
+					success:function(e){
+						for(var i in e){
+							$(".right").append('<p>'+e[i].title+'<span>'+e[i].datail+'</span></p>')
+						}
+					}
+				})
+				
+					$("button").click(function(){
+						var a=$('#inp').val()
+						var b=$('#inp2').val()
+						$.ajax({
+						url:'http://localhost:3000/item/add',
+						type:'post',
+						data:{a:a,b:b},
+						success:function(e){
+							console.log(e)
+							}
+						})
+			
+		
+					})
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text" id="inp"/>
+		<input type="text" id="inp2"/>
+		<button>提交</button>
+		<div class="right">
+			
+		</div>
+	</body>
+</html>

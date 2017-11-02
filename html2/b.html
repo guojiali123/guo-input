@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					url:'http://localhost:3000/item/view',
+					type:'POST',
+					data:{},
+					success:function(e){
+						for(var i in e){
+							$(".wrap").append('<p>'+e[i].title+'<span>'+e[i].datail+'</span></p>')
+						}
+					}
+				})
+			})
+		</script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap p{
+				margin-left: 30px;
+				font-weight: bold;
+			}
+			.wrap span{
+				width: 100px;
+				display: block;
+				margin-left: 30px;
+				color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+	</body>
+</html>
